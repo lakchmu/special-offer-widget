@@ -1,5 +1,10 @@
-export default function sum(strA, strB) {
-  return `${strA}${strB}`;
+import getOffers from './TBFSpecialOffers/getOffers';
+
+function TBFSpecialOffer(token, filters) {
+  getOffers(token, filters).then( offersList => {
+    console.log( offersList );
+  });
 }
 
-console.log(sum('Hello', ' world'));
+window.TBFSpecialOffer = TBFSpecialOffer;
+export default TBFSpecialOffer;
