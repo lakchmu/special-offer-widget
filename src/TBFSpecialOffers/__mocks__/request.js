@@ -1,4 +1,6 @@
-const specialOffers = '[{ "title": "Last Minute Booking" }]';
+import { MOCK_GET_OFFERS } from '../../constants';
+
+const specialOffers = MOCK_GET_OFFERS;
 
 function request(url, method, headerName, headerValue) {
   return new Promise((resolve, reject) => {
