@@ -1,10 +1,11 @@
 import getOffers from './TBFSpecialOffers/getOffers';
 import OffersStorage from './TBFSpecialOffers/offersStorage';
+import OffersView from './TBFSpecialOffers/offersView';
 
-function TBFSpecialOffer(token, filters) {
+function TBFSpecialOffer(targetDivElement, token, filters, options) {
   getOffers(token, filters).then( response => {
-    let offersStorage = new OffersStorage( JSON.parse(response).special_offers );
-    console.log(offersStorage);
+    const offersStorage = new OffersStorage( JSON.parse(response).special_offers );
+    const offersView = new OffersView(targetDivElement, offersStorage, options);
   });
 }
 
