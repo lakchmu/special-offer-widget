@@ -1,14 +1,26 @@
 class OfferModel {
   constructor(offer) {
-    this.title = offer.title;
-    this.shortDescription = offer.short_description;
-    this.description = offer.description;
-    this.dateFrom = offer.date_from;
-    this.dateTo = offer.date_to;
-    this.imageLink = offer.image;
-    this.discountValue = offer.discount_value;
-    this.discountType = offer.discount_type;
-    this.bookingLink = offer.link;
+    const {
+      title,
+      shortDescription,
+      description,
+      dateFrom,
+      dateTo,
+      image,
+      discountValue,
+      discountType,
+      link,
+    } = offer;
+
+    this.title = title;
+    this.shortDescription = shortDescription;
+    this.description = description;
+    this.dateFrom = dateFrom;
+    this.dateTo = dateTo;
+    this.imageLink = image;
+    this.discountValue = discountValue;
+    this.discountType = discountType;
+    this.bookingLink = link;
   }
 }
 
