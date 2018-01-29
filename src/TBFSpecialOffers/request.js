@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 function request(url, method, headerName, headerValue) {
   let headers = new Headers();
   headers.append(headerName, headerValue);
