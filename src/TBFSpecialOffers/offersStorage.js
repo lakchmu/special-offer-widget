@@ -2,8 +2,7 @@ import OfferModel from './offerModel';
 
 class OffersStorage {
   constructor(offersList) {
-    this.list = [];
-    offersList.map(offer => this.list.push( new OfferModel(offer) ) );
+    this.list = offersList.map(offer => new OfferModel(offer));
   }
 }
 
