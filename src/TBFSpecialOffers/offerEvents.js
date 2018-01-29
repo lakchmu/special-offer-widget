@@ -1,3 +1,3 @@
-export function offerElementClickEventHandler(event) {
-  this.classList.toggle('open');
+export default function offerElementClickEventHandler() {
+  this.classList.toggle('tbf-so-open');
 }

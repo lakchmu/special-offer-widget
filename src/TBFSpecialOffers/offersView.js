@@ -1,51 +1,88 @@
-import {offerElementClickEventHandler} from './offerEvents'
+import { offerElementClickEventHandler } from './offerEvents';
 
 class OffersView {
   constructor(rootElement, offersStorage, options) {
-    this.rootElement = document.querySelector(rootElement);
+    // Assign internal variables
+    this.rootElement = OffersView.getRootElement(rootElement);
     this.storage = offersStorage;
     this.options = options;
-    if (this.options.defaultCSS === true) {
-      this.rootElement.classList.add('default-css');
-    }
+
+    // Action pipeline
+    this.assignCSS();
     this.createList();
-    if (this.options.defaultEvents === true) {
-      this.initAndDestroyEvents();
+    this.assignEvents();
+  }
+
+  static getRootElement(selector) {
+    const targetElement = document.querySelector(selector);
+    if (!targetElement) {
+      throw new Error(`Element "${selector}" not found`);
     }
+    return targetElement;
   }
 
   createList() {
-    const renderFunction = this.options.renderTemplate ? this.options.renderTemplate : this.renderTemplate;
-    const fullTemplate = this.storage.list.map(offerModel => {
-      return renderFunction(offerModel);
-    });
-    this.rootElement.innerHTML = fullTemplate.join('\n');
+    this.rootElement.innerHTML = this.storage.list
+      .map(offerModel => this.renderTemplate(offerModel))
+      .join('\n');
   }
 
   renderTemplate(offerModel) {
-    return `
-      <div class="offer">
-        <div class="offer__header">
-          <div class="offer__title">${offerModel.title}</div>
-          <div class="offer__short-description">${offerModel.shortDescription}</div>
+    let template;
+    if (this.options.renderTemplate) {
+      if (typeof this.options.renderTemplate !== 'function') {
+        throw new Error('options.renderTemplate is not a function');
+      }
+      template = this.options.renderTemplate();
+      if (typeof template !== 'string') {
+        throw new Error('options.renderTemplate must return a string');
+      }
+    } else {
+      const {
+        title,
+        shortDescription,
+        dateFrom,
+        dateTo,
+        description,
+        imageLink,
+        discountValue,
+        discountType,
+        bookingLink,
+      } = offerModel;
+
+      template = `
+        <div class="tbf-so-offer">
+          <div class="tbf-so-offer__header">
+            <div class="tbf-so-offer__title">${title}</div>
+            <div class="tbf-so-offer__short-description">${shortDescription}</div>
+          </div>
+          <div class="tbf-so-offer__content">
+            <span class="tbf-so-offer__dates">From ${dateFrom} to ${dateTo}</span>
+            <div class="tbf-so-offer__description">${description}</div>
+            <img class="tbf-so-offer__image" src="${imageLink}" />
+            <span class="tbf-so-offer__discount">${discountValue} ${discountType}</span>
+            <a class="tbf-so-offer__booking-link" href="${bookingLink}">Book now</a>
+          </div>
         </div>
-        <div class="offer__content">
-          <span class="offer__dates">From ${offerModel.dateFrom} to ${offerModel.dateTo}</span>
-          <div class="offer__description">${offerModel.description}</div>
-          <img class="offer__image" src="${offerModel.imageLink}" />
-          <span class="offer__discount">${offerModel.discountValue} ${offerModel.discountType}</span>
-          <a class="offer__booking-link" href="${offerModel.bookingLink}">Book now</a>
-        </div>
-      </div>
-    `;
+      `;
+    }
+    return template;
   }
 
-  initAndDestroyEvents() {
-    const offerElements = document.querySelectorAll('.offer');
-    offerElements.forEach(offerElement => {
-      offerElement.addEventListener('click', offerElementClickEventHandler);
-      offerElement.removeEventListener('onunload', offerElementClickEventHandler);
-    });
+  assignCSS() {
+    if (this.options.defaultCSS === true) {
+      this.rootElement.classList.add('default-css');
+    }
+  }
+
+  assignEvents() {
+    if (this.options.defaultEvents === true) {
+      const offerElements = this.rootElement.querySelectorAll('.tbf-so-offer');
+      offerElements.forEach((offerElement) => {
+        offerElement.addEventListener('click', offerElementClickEventHandler);
+        offerElement.removeEventListener('onunload', offerElementClickEventHandler);
+      });
+    }
   }
 }
 
