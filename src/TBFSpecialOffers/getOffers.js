@@ -1,9 +1,10 @@
 import request from './request';
 import OffersStorage from './offersStorage';
+import { API_END_POINT, API_METHOD_SPECIAL_OFFERS } from '../constants';
 
 function getOffers(token, filters) {
-  const endPoint = 'https://app.thebookingfactory.com/api/public/v1/special_offers';
-  return request(endPoint, 'get', token)
+  const url = API_END_POINT + API_METHOD_SPECIAL_OFFERS;
+  return request(url, 'get', token)
     .then(function(response) {
       return response.json();
     })
