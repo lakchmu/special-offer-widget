@@ -1,4 +1,4 @@
-import { MOCK_GET_OFFERS } from '../../constants';
+import { MOCK_GET_OFFERS } from './constants';
 
 function request(url, method, tokenValue) {
   let result = {data: MOCK_GET_OFFERS, json: () => JSON.parse(result.data)};

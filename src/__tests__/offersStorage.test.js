@@ -2,7 +2,7 @@ jest.mock('../TBFSpecialOffers/request');
 
 import getOffers from '../TBFSpecialOffers/getOffers';
 import OffersStorage from '../TBFSpecialOffers/offersStorage';
-import { MOCK_GET_OFFERS } from '../constants';
+import { MOCK_GET_OFFERS } from '../TBFSpecialOffers/__mocks__/constants';
 
 test('class OfferModel', () => {
   const token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';
