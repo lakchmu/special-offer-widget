@@ -1,4 +1,5 @@
 import { offerElementClickEventHandler } from './offerEvents';
+import style from '../index.css';
 
 class OffersView {
   constructor(rootElement, offersStorage, options) {
@@ -71,7 +72,7 @@ class OffersView {
 
   assignCSS() {
     if (this.options.defaultCSS === true) {
-      this.rootElement.classList.add('default-css');
+      style.use();
     }
   }
 
