@@ -2,18 +2,16 @@ import { MOCK_GET_OFFERS } from './constants';
 import { API_END_POINT, API_METHOD_SPECIAL_OFFERS } from '../../constants';
 
 function request(url, method, tokenValue) {
-  let result = {data: MOCK_GET_OFFERS, json: () => JSON.parse(result.data)};
+  const result = { data: MOCK_GET_OFFERS, json: () => JSON.parse(result.data) };
   return new Promise((resolve, reject) => {
-    process.nextTick(
-      () =>
-        url === API_END_POINT + API_METHOD_SPECIAL_OFFERS &&
-        method === 'get' &&
-        typeof tokenValue === 'string'
-          ? resolve(result)
-          : reject({
-              error: 'Error data',
-            }),
-    );
+    process.nextTick(() => {
+      if (url === API_END_POINT + API_METHOD_SPECIAL_OFFERS &&
+        method === 'get' && typeof tokenValue === 'string') {
+        resolve(result);
+      } else {
+        reject(new Error('Error data'));
+      }
+    });
   });
 }
 

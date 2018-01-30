@@ -3,12 +3,8 @@ import OffersView from './TBFSpecialOffers/offersView';
 
 function TBFSpecialOffer(targetDivElement, token, filters, options) {
   getOffers(token, filters)
-    .then(offersStorage => {
-      const offersView = new OffersView(targetDivElement, offersStorage, options);
-    })
-    .catch(error => {
-      console.warn(error, "Something going wrong!");
-    });
+    .then(offersStorage => new OffersView(targetDivElement, offersStorage, options))
+    .catch(error => console.warn(error, 'Something going wrong!'));
 }
 
 window.TBFSpecialOffer = TBFSpecialOffer;
