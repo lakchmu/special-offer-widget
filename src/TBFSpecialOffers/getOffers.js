@@ -3,7 +3,7 @@ import OffersStorage from './offersStorage';
 
 function getOffers(token, filters) {
   const endPoint = 'https://app.thebookingfactory.com/api/public/v1/special_offers';
-  return request(endPoint, 'get', 'token', token)
+  return request(endPoint, 'get', token)
     .then(function(response) {
       return response.json();
     })
