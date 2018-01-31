@@ -15,6 +15,7 @@
     "eslint": "^4.16.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
     "style-loader": "^0.20.1",
     "webpack": "^3.10.0",
@@ -31,6 +32,9 @@
     ],
     "transform": {
       "^.+\\.js$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "^.+\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
     }
   },
   "scripts": {
