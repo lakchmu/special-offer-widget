@@ -2,9 +2,7 @@ jest.mock('../TBFSpecialOffers/request');
 jest.mock('../index.css');
 
 import getOffers from '../TBFSpecialOffers/getOffers';
-import OfferModel from '../TBFSpecialOffers/offerModel';
 import OffersView from '../TBFSpecialOffers/offersView';
-import { MOCK_GET_OFFERS } from '../TBFSpecialOffers/__mocks__/constants';
 
 const token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';
 const filters = {};
@@ -107,7 +105,7 @@ it('Test using custom render function', () => {
         return template;
       };
 
-      //Test custom render function
+      // Test custom render function
       expect(root.querySelector('.special-offers .tbf-so-offer')).not.toBeNull();
       const title = root.querySelector('.special-offers .tbf-so-offer__title');
       expect(title).not.toBeNull();
