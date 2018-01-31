@@ -1,4 +1,4 @@
-import { offerElementClickEventHandler } from './offerEvents';
+import offerElementClickEventHandler from './offerEvents';
 import style from '../index.css';
 
 class OffersView {
@@ -34,7 +34,7 @@ class OffersView {
       if (typeof this.options.renderTemplate !== 'function') {
         throw new Error('options.renderTemplate is not a function');
       }
-      template = this.options.renderTemplate();
+      template = this.options.renderTemplate(offerModel);
       if (typeof template !== 'string') {
         throw new Error('options.renderTemplate must return a string');
       }
@@ -81,7 +81,7 @@ class OffersView {
       const offerElements = this.rootElement.querySelectorAll('.tbf-so-offer');
       offerElements.forEach((offerElement) => {
         offerElement.addEventListener('click', offerElementClickEventHandler);
-        offerElement.removeEventListener('onunload', offerElementClickEventHandler);
+        offerElement.removeEventListener('unload', offerElementClickEventHandler);
       });
     }
   }
