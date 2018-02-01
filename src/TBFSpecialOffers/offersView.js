@@ -74,13 +74,13 @@ class OffersView {
   }
 
   assignCSS() {
-    if (this.options.defaultCSS === true) {
+    if (this.options.defaultCSS !== false) {
       style.use();
     }
   }
 
   assignEvents() {
-    if (this.options.defaultEvents === true) {
+    if (this.options.defaultEvents !== false) {
       const offerElements = this.rootElement.querySelectorAll('.tbf-so-offer');
       offerElements.forEach((offerElement) => {
         offerElement.addEventListener('click', offerElementClickEventHandler);
