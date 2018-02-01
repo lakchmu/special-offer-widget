@@ -114,3 +114,75 @@ it('Test using custom render function', () => {
       }
     });
 });
+
+it('Test otion.renderFunction is not function', () => {
+  expect.assertions(1);
+  // Set up our document body
+  document.body.innerHTML = '<div class="special-offers"></div>';
+  return getOffers(token, filters)
+    .then((offersStorage) => {
+      function wrapperNewOffersView() {
+        return new OffersView('.special-offers', offersStorage, options);
+      }
+      options.renderTemplate = 'not function';
+      expect(wrapperNewOffersView).toThrow();
+    });
+});
+
+it('Test otion.renderFunction return not string', () => {
+  expect.assertions(1);
+  // Set up our document body
+  document.body.innerHTML = '<div class="special-offers"></div>';
+  return getOffers(token, filters)
+    .then((offersStorage) => {
+      function wrapperNewOffersView() {
+        return new OffersView('.special-offers', offersStorage, options);
+      }
+      options.renderTemplate = (offerModel) => {
+        const { title } = offerModel;
+
+        const template = () => `
+          <div class="tbf-so-offer">
+              <div class="tbf-so-offer__title">${title}</div>
+          </div>
+          `;
+        return template;
+      };
+      expect(wrapperNewOffersView).toThrow();
+    });
+});
+
+it('Test. Root element does not exist', () => {
+  expect.assertions(1);
+  // Set up our document body
+  document.body.innerHTML = '<div class="special-offers"></div>';
+  return getOffers(token, filters)
+    .then((offersStorage) => {
+      function wrapperNewOffersView() {
+        return new OffersView('.not-existing-root-element', offersStorage, options);
+      }
+      expect(wrapperNewOffersView).toThrow();
+    });
+});
+
+it('Test using custom render function', () => {
+  expect.assertions(1);
+  // Set up our document body
+  document.body.innerHTML = '<div class="special-offers"></div>';
+  return getOffers(token, filters)
+    .then((offersStorage) => {
+      function wrapperNewOffersView() {
+        return new OffersView('.special-offers', offersStorage, options);
+      }
+      options.renderTemplate = () => {
+        const title = 'Title';
+        const template = `
+          <div class="tbf-so-offer">
+              <div class="tbf-so-offer__title">${title}</div>
+          </div>
+        `;
+        return template;
+      };
+      expect(wrapperNewOffersView).toThrow();
+    });
+});
