@@ -34,6 +34,9 @@ class OffersView {
       if (typeof this.options.renderTemplate !== 'function') {
         throw new Error('options.renderTemplate is not a function');
       }
+      if (this.options.renderTemplate.length !== 1) {
+        throw new Error('options.renderTemplate must take one parameter');
+      }
       template = this.options.renderTemplate(offerModel);
       if (typeof template !== 'string') {
         throw new Error('options.renderTemplate must return a string');
