@@ -58,14 +58,24 @@ class OffersView {
         <div class="tbf-so-offer">
           <div class="tbf-so-offer__header">
             <div class="tbf-so-offer__title">${title}</div>
-            <div class="tbf-so-offer__short-description">${shortDescription}</div>
           </div>
           <div class="tbf-so-offer__content">
-            <span class="tbf-so-offer__dates">From ${dateFrom} to ${dateTo}</span>
-            <div class="tbf-so-offer__description">${description}</div>
-            <img class="tbf-so-offer__image" src="${imageLink}" />
-            <span class="tbf-so-offer__discount">${discountValue} ${discountType}</span>
-            <a class="tbf-so-offer__booking-link" href="${bookingLink}">Book now</a>
+            <div class="tbf-so-offer__content-image">
+              <img class="tbf-so-offer__image" src="${imageLink}" />
+            </div>
+            <div class="tbf-so-offer__content-text">
+              <div class="tbf-so-offer__short-description">${shortDescription}</div>
+              <div class="tbf-so-offer__description">${description}</div>
+              <span class="tbf-so-offer__dates">
+                <i class="fas fa-calendar-alt"></i>${dateFrom} - ${dateTo}
+              </span>
+            </div>
+            <div class="tbf-so-offer__content-booking">
+              <div class="tbf-so-offer__discount-description">From</div>
+              <div class="tbf-so-offer__discount">${discountValue} ${discountType === 'percent' ? '%' : discountType}</div>
+              <div class="tbf-so-offer__discount-description">per nigth</div>
+              <a class="tbf-so-offer__booking-link" href="${bookingLink}">Book now</a>
+            </div>
           </div>
         </div>
       `;
