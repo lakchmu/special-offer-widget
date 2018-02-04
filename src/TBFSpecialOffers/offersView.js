@@ -85,6 +85,7 @@ class OffersView {
 
   assignCSS() {
     if (this.options.defaultCSS !== false) {
+      this.rootElement.classList.add('tbf-special-offers');
       style.use();
     }
   }
