@@ -15,8 +15,8 @@ class OfferModel {
     this.title = title;
     this.shortDescription = short_description;
     this.description = description;
-    this.dateFrom = date_from;
-    this.dateTo = date_to;
+    this.dateFrom = new Date(date_from);
+    this.dateTo = new Date(date_to);
     this.imageLink = image;
     this.discountValue = discount_value;
     this.discountType = discount_type;

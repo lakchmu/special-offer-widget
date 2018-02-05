@@ -54,6 +54,10 @@ class OffersView {
         bookingLink,
       } = offerModel;
 
+      const currentLocale = window.navigator.userLanguage || window.navigator.language;
+      const localizedDateFrom = dateFrom.toLocaleString(currentLocale, { month: 'short', day: 'numeric' });
+      const localizedDateTo = dateTo.toLocaleString(currentLocale, { month: 'short', day: 'numeric' });
+
       template = `
         <div class="tbf-so-offer">
           <div class="tbf-so-offer__header">
@@ -67,7 +71,7 @@ class OffersView {
               <div class="tbf-so-offer__short-description">${shortDescription}</div>
               <div class="tbf-so-offer__description">${description}</div>
               <span class="tbf-so-offer__dates">
-                <i class="fas fa-calendar-alt"></i>${dateFrom} - ${dateTo}
+                <i class="fas fa-calendar-alt"></i>${localizedDateFrom} - ${localizedDateTo}
               </span>
             </div>
             <div class="tbf-so-offer__content-booking">

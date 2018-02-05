@@ -7,8 +7,8 @@ test('Test OfferModel class', () => {
   expect(typeof offerModel.title).toBe('string');
   expect(typeof offerModel.shortDescription).toBe('string');
   expect(typeof offerModel.description).toBe('string');
-  expect(typeof offerModel.dateFrom).toBe('string');
-  expect(typeof offerModel.dateTo).toBe('string');
+  expect(offerModel.dateFrom).toBeInstanceOf(Date);
+  expect(offerModel.dateTo).toBeInstanceOf(Date);
   expect(typeof offerModel.imageLink).toBe('string');
   expect(typeof offerModel.discountValue).toBe('string');
   expect(typeof offerModel.discountType).toBe('string');
