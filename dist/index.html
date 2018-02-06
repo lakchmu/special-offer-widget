@@ -1,14 +1,57 @@
 <html>
   <head>
-    <title>TBF Special Offers</title>
+    <title>TBF Special Offers Widget</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   </head>
+  <style>
+    body {
+      background-color: #FFF;
+    }
+    h1 {
+      color: #424242;
+      font-family: 'Roboto', sans-serif;
+      font-size: 48px;
+      font-weight: 300;
+      text-align: center;
+    }
+    h2 {
+      color: #939ea8;
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+      text-indent: 20px;
+      line-height: 1.62;
+      text-align: center;
+    }
+    .code-example {
+      background-color: #000;
+      box-sizing: border-box;
+      color: #FFF;
+      font-size: 14px;
+      padding: 25px 0;
+      line-height: 1.62;
+      width: 1000px;
+      margin: auto;
+    }
+  </style>
   <body>
+    <h1>TBF Special Offers Widget</h1>
+    <h2>Code example in body tag</h2>
+    <pre class="code-example">
+        &lt;div class="special-offers"&gt;&lt;/div&gt;
+        &lt;script src="http://special-offer.widgets.thebookingfactory.com/tbfSpecailOffers.bundle.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+        <span>  var token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';</span>
+        <span>  TBFSpecialOffer('.special-offers', token);</span>
+        &lt;/script&gt;
+    </pre>
+    <h2>Widget example</h2>
     <div class="special-offers"></div>
     <script src="tbfSpecailOffers.bundle.js"></script>
     <script>
-      const token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';
+      var token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';
       TBFSpecialOffer('.special-offers', token);
     </script>
   </body>
