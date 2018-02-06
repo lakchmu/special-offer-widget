@@ -6,6 +6,7 @@
   "author": "Kurmaeva Daria",
   "dependencies": {},
   "devDependencies": {
+    "aws-sdk": "^2.189.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.1.0",
     "babel-loader": "^7.1.2",
@@ -17,6 +18,7 @@
     "eslint-plugin-import": "^2.8.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
+    "mime": "^2.2.0",
     "style-loader": "^0.20.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1",
@@ -40,6 +42,7 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server --open",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "webpack && node ./scripts/deploy.js"
   }
 }

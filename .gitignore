@@ -1,3 +1,4 @@
 node_modules
+aws-credentials.json
 dist/tbfSpecailOffers.bundle.js
 widget_structure.txt
