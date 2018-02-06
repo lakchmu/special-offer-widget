@@ -60,16 +60,13 @@ class OffersView {
 
       template = `
         <div class="tbf-so-offer">
-          <div class="tbf-so-offer__header">
-            <div class="tbf-so-offer__title">${title}</div>
-          </div>
           <div class="tbf-so-offer__content">
             <div class="tbf-so-offer__content-image">
               <img class="tbf-so-offer__image" src="${imageLink}" />
             </div>
             <div class="tbf-so-offer__content-text">
-              <div class="tbf-so-offer__short-description">${shortDescription}</div>
-              <div class="tbf-so-offer__description">${description}</div>
+              <div class="tbf-so-offer__title">${title}</div>
+              <div class="tbf-so-offer__description">${shortDescription}. ${description}</div>
               <span class="tbf-so-offer__dates">
                 <i class="fas fa-calendar-alt"></i>${localizedDateFrom} - ${localizedDateTo}
               </span>

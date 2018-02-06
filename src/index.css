@@ -10,40 +10,26 @@
 .tbf-so-offer {
   background-color: #FFF;
   width: 100%;
-  margin: 3px auto;
+  margin: auto;
   position: relative;
   z-index: 1;
   overflow: hidden;
-  padding-left: 10px;
+  padding: 33px 10px;
 }
 
-.tbf-so-offer .tbf-so-offer__header {
-  text-align: center;
-  width: auto;
-  margin: auto;
-}
-
-.tbf-so-offer .tbf-so-offer__title {
-  padding: 20px;
-}
-
-.tbf-so-offer .tbf-so-offer__title,
-.tbf-so-offer .tbf-so-offer__short-description {
+.tbf-so-offer .tbf-so-offer__title{
   color: #424242;
   font-family: Catamaran, sans-serif;
   font-size: 22px;
   font-weight: 600;
   line-height: 1.62;
-}
-
-.tbf-so-offer .tbf-so-offer__short-description {
   overflow: hidden;
   white-space: nowrap;
   position: relative;
   margin-bottom: 19px;
 }
 
-.tbf-so-offer .tbf-so-offer__short-description::after {
+.tbf-so-offer .tbf-so-offer__title::after {
   background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 95%);
   content: '';
   position: absolute;
@@ -54,16 +40,11 @@
 }
 
 .tbf-so-offer .tbf-so-offer__content {
-  opacity: 0;
+  opacity: 1;
   transition: all 900ms ease 100ms;
-  height: 0;
+  height: 260px;
   vertical-align: middle;
   font-size: 0;
-}
-
-.tbf-so-offer.tbf-so-open .tbf-so-offer__content {
-  opacity: 1;
-  height: 260px;
 }
 
 .tbf-so-offer__content-image {
@@ -200,7 +181,7 @@
     max-width: 942px;
   }
 
-  .tbf-so-offer.tbf-so-open .tbf-so-offer__content {
+  .tbf-so-offer .tbf-so-offer__content {
     height: 350px;
     position: relative;
   }
@@ -248,7 +229,7 @@
     width: 96%;
   }
 
-  .tbf-so-offer.tbf-so-open .tbf-so-offer__content {
+  .tbf-so-offer .tbf-so-offer__content {
     height: 696px;
   }
 
@@ -286,7 +267,7 @@
     max-width: 100%;
   }
 
-  .tbf-so-offer.tbf-so-open .tbf-so-offer__content {
+  .tbf-so-offer .tbf-so-offer__content {
     height: 750px;
   }
 
