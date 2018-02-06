@@ -11,6 +11,8 @@ function getOffers(token, filters) {
         throw new Error(json.errors.reduce((previousError, currentError) => `${previousError}, ${currentError}`));
       }
       return new OffersStorage(json.special_offers);
+    }).catch((error) => {
+      throw new Error(error.message);
     });
 }
 

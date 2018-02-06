@@ -9,7 +9,7 @@ function TBFSpecialOffer(
 ) {
   getOffers(token, filters)
     .then(offersStorage => new OffersView(targetDivElement, offersStorage, options))
-    .catch(error => console.warn(error, 'TBFSpecialOffer: Something going wrong!'));
+    .catch(error => console.warn(error, 'TBFSpecialOffer: something going wrong!'));
 }
 
 window.TBFSpecialOffer = TBFSpecialOffer;

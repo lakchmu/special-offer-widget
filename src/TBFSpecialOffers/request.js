@@ -11,8 +11,15 @@ function request(url, method, tokenValue) {
   };
 
   return fetch(url, initOptions)
-    .then(response => response)
-    .catch(error => console.warn(error, 'Something going wrong!'));
+    .then((response) => {
+      if (response.ok === false) {
+        throw new Error(`Fetch: response.ok is ${response.ok}, response.status is ${response.status}`);
+      }
+      return response;
+    })
+    .catch((error) => {
+      throw new Error(error.message);
+    });
 }
 
 export default request;
