@@ -66,16 +66,19 @@ class OffersView {
             </div>
             <div class="tbf-so-offer__content-text">
               <div class="tbf-so-offer__title">${title}</div>
-              <div class="tbf-so-offer__description">${shortDescription}. ${description}</div>
-              <span class="tbf-so-offer__dates">
-                <i class="fas fa-calendar-alt"></i>${localizedDateFrom} - ${localizedDateTo}
-              </span>
-            </div>
-            <div class="tbf-so-offer__content-booking">
-              <div class="tbf-so-offer__discount-description">From</div>
-              <div class="tbf-so-offer__discount">${discountValue} ${discountType === 'percent' ? '%' : discountType}</div>
-              <div class="tbf-so-offer__discount-description">per nigth</div>
-              <a class="tbf-so-offer__booking-link" href="${bookingLink}">Book now</a>
+              <div class="tbf-so-offer__wrapper-description">
+                <div class="tbf-so-offer__short-description">${shortDescription}</div>
+                <div class="tbf-so-offer__description">${description}</div>
+              </div>
+              <div class="tbf-so-offer__footer">
+                <span class="tbf-so-offer__dates">
+                  <i class="tbf-so-offer__icon-calendar"></i>${localizedDateFrom} - ${localizedDateTo}
+                </span>
+                <span class="tbf-so-offer__control-links">
+                  <button class="tbf-so-offer__more-link">More</button>
+                  <a class="tbf-so-offer__booking-link" href="${bookingLink}">Book now</a>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -93,7 +96,7 @@ class OffersView {
 
   assignEvents() {
     if (this.options.defaultEvents !== false) {
-      const offerElements = this.rootElement.querySelectorAll('.tbf-so-offer');
+      const offerElements = this.rootElement.querySelectorAll('.tbf-so-offer__more-link');
       offerElements.forEach((offerElement) => {
         offerElement.addEventListener('click', offerElementClickEventHandler);
         offerElement.removeEventListener('unload', offerElementClickEventHandler);
