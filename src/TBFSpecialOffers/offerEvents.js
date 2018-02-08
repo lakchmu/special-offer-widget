@@ -1,6 +1,10 @@
 export default function offerElementClickEventHandler() {
-  const parentOffer = this.closest('.tbf-so-offer');
-  if (parentOffer) {
+  let parentOffer = this.parentElement;
+  while (!parentOffer.classList.contains('tbf-so-offer') &&
+         !parentOffer.classList.contains('tbf-special-offers')) {
+    parentOffer = parentOffer.parentElement;
+  }
+  if (parentOffer.classList.contains('tbf-so-offer')) {
     parentOffer.classList.toggle('tbf-so-open');
     if (parentOffer.classList.contains('tbf-so-open')) {
       this.textContent = 'Less';
