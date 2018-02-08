@@ -1,9 +1,13 @@
 import OfferModel from '../TBFSpecialOffers/offerModel';
 import { MOCK_GET_OFFERS } from '../TBFSpecialOffers/__mocks__/constants';
 
-test('Test OfferModel class', () => {
+function setup() {
   const testOffer = JSON.parse(MOCK_GET_OFFERS).special_offers[0];
-  const offerModel = new OfferModel(testOffer);
+  return new OfferModel(testOffer);
+}
+
+test('Test OfferModel class', () => {
+  const offerModel = setup();
   expect(typeof offerModel.title).toBe('string');
   expect(typeof offerModel.shortDescription).toBe('string');
   expect(typeof offerModel.description).toBe('string');
