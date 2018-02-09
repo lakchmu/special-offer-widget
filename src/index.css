@@ -86,6 +86,12 @@
   z-index: 2;
 }
 
+.tbf-so-offer .tbf-so-offer__image.tbf-so-offer__missing-image {
+  background-color: #FFF;
+  border: 1px solid #DCDEE6;
+  box-sizing: border-box;
+}
+
 .tbf-so-offer .tbf-so-offer__content-text {
   border: 1px solid #DCDEE6;
   box-sizing: border-box;

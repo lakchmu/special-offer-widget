@@ -1,4 +1,5 @@
 import offerElementClickEventHandler from './offerEvents';
+import { MISSING_IMAGE_URL } from '../constants';
 import style from '../index.css';
 
 class OffersView {
@@ -62,7 +63,7 @@ class OffersView {
         <div class="tbf-so-offer">
           <div class="tbf-so-offer__content">
             <div class="tbf-so-offer__content-image">
-              <img class="tbf-so-offer__image" src="${imageLink}" />
+              <img class="tbf-so-offer__image ${imageLink === MISSING_IMAGE_URL ? 'tbf-so-offer__missing-image' : ''}" src="${imageLink}" />
             </div>
             <div class="tbf-so-offer__content-text">
               <div class="tbf-so-offer__title">${title}</div>
