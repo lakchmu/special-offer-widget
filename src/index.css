@@ -41,7 +41,6 @@
 
 .tbf-so-offer .tbf-so-offer__content {
   opacity: 1;
-  transition: all 900ms ease 100ms;
   height: auto;
   vertical-align: middle;
   font-size: 0;
@@ -101,15 +100,14 @@
   max-height: 260px;
   height: 260px;
   min-height: 260px;
-  transition: all 900ms ease 100ms;
   padding: 45px 20px 20px 45px;
   margin-left: -1px;
 }
 
 .tbf-so-offer.tbf-so-open .tbf-so-offer__content-text {
-  max-height: 395px;
+  max-height: 1215px;
   height: auto;
-  transition: all 900ms ease 100ms;
+  transition: all 3500ms ease 100ms;
 }
 
 .tbf-so-offer__wrapper-description {
@@ -130,13 +128,12 @@
 .tbf-so-offer .tbf-so-offer__description {
   max-height: 0;
   height: 0;
-  transition: all 900ms ease 100ms;
 }
 
 .tbf-so-offer.tbf-so-open .tbf-so-offer__description {
-  max-height: 180px;
+  max-height: 1000px;
   height: auto;
-  transition: all 900ms ease 100ms;
+  transition: all 3500ms ease 100ms;
 }
 
 .tbf-so-offer .tbf-so-offer__footer {
@@ -213,7 +210,6 @@
   }
   
   .tbf-so-offer .tbf-so-offer__content {
-    transition: all 1200ms ease 100ms;
     width: 96%;
   }
 
@@ -234,17 +230,16 @@
   }
 
   .tbf-so-offer.tbf-so-open .tbf-so-offer__content-text {
-    max-height: 1000px;
+    max-height: 2215px;
   }
 
   .tbf-so-offer.tbf-so-open .tbf-so-offer__description {
-    max-height: 500px;
+    max-height: 2000px;
   }
 }
 
 @media only screen and (max-width : 500px) {
   .tbf-so-offer .tbf-so-offer__content-text {
-    max-height: 347px;
     height: auto;
   }
   
