@@ -1,8 +1,130 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Testing class methods Testing adding css class to root element 1`] = `true`;
+
+exports[`Testing class methods Testing default render function 1`] = `
+<div
+  class="special-offers tbf-so-special-offers"
+>
+  
+        
+  <div
+    class="tbf-so-offer"
+  >
+    
+          
+    <div
+      class="tbf-so-offer__content"
+    >
+      
+            
+      <div
+        class="tbf-so-offer__content-image"
+      >
+        
+              
+        <img
+          class="tbf-so-offer__image"
+          src="https://s3.amazonaws.com/buuqit-dev/special_offers/images/000/000/009/public/Room2.jpg?1515606281"
+        />
+        
+            
+      </div>
+      
+            
+      <div
+        class="tbf-so-offer__content-text"
+      >
+        
+              
+        <div
+          class="tbf-so-offer__title"
+        >
+          Last Minute Booking
+        </div>
+        
+              
+        <div
+          class="tbf-so-offer__wrapper-description"
+        >
+          
+                
+          <div
+            class="tbf-so-offer__short-description"
+          >
+            Last minute rate, Non-Refundable
+          </div>
+          
+                
+          <div
+            class="tbf-so-offer__description"
+          >
+            Last minute booking discount, full pre payment required on time of booking. Please note this rate is non-refundable.
+          </div>
+          
+              
+        </div>
+        
+              
+        <div
+          class="tbf-so-offer__footer"
+        >
+          
+                
+          <span
+            class="tbf-so-offer__dates"
+          >
+            
+                  
+            <i
+              class="tbf-so-offer__icon-calendar"
+            />
+            Jun 9 - Aug 31
+                
+          </span>
+          
+                
+          <span
+            class="tbf-so-offer__control-links"
+          >
+            
+                  
+            <button
+              class="tbf-so-offer__more-link"
+            >
+              More
+            </button>
+            
+                  
+            <a
+              class="tbf-so-offer__booking-link"
+              href="https://app.thebookingfactory.com/Spilman-Hotel/book/__special_offer_9"
+            >
+              Book now
+            </a>
+            
+                
+          </span>
+          
+              
+        </div>
+        
+            
+      </div>
+      
+          
+    </div>
+    
+        
+  </div>
+  
+      
+</div>
+`;
+
 exports[`Testing custom render function Testing rendering 1`] = `
 <div
-  class="special-offers tbf-special-offers"
+  class="special-offers tbf-so-special-offers"
 >
   <div
     class="tbf-so-offer"

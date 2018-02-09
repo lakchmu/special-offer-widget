@@ -63,6 +63,39 @@ function getOptions(key) {
   return options;
 }
 
+describe('Testing class methods', () => {
+  it('Root element for widget does not exist', () => {
+    document.body.innerHTML = '<div class="special-offers"></div>';
+    expect.assertions(1);
+    return setup().then((offersStorage) => {
+      function testWrapper() {
+        return new OffersView('.not-existing-root-element', offersStorage, getOptions('empty'));
+      }
+      expect(testWrapper).toThrow();
+    });
+  });
+
+  it('Testing default render function', () => {
+    document.body.innerHTML = '<div class="special-offers"></div>';
+    const root = document.querySelector('.special-offers');
+    expect.assertions(1);
+    return setup().then((offersStorage) => {
+      const offersView = new OffersView('.special-offers', offersStorage, getOptions('empty'));
+      expect(root).toMatchSnapshot();
+    });
+  });
+
+  it('Testing adding css class to root element', () => {
+    document.body.innerHTML = '<div class="special-offers"></div>';
+    const root = document.querySelector('.special-offers');
+    expect.assertions(1);
+    return setup().then((offersStorage) => {
+      const offersView = new OffersView('.special-offers', offersStorage, getOptions('empty'));
+      expect(root.classList.contains('tbf-so-special-offers')).toMatchSnapshot();
+    });
+  });
+});
+
 describe('Testing event listeners', () => {
   it('Testing click event by "More" button', () => {
     document.body.innerHTML = '<div class="special-offers"></div>';
@@ -131,13 +164,3 @@ describe('Testing custom render function', () => {
   });
 });
 
-it('Root element for widget does not exist', () => {
-  document.body.innerHTML = '<div class="special-offers"></div>';
-  expect.assertions(1);
-  return setup().then((offersStorage) => {
-    function testWrapper() {
-      return new OffersView('.not-existing-root-element', offersStorage, getOptions('empty'));
-    }
-    expect(testWrapper).toThrow();
-  });
-});
