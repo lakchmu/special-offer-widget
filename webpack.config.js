@@ -18,8 +18,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          { loader: 'style-loader/useable' },
-          { loader: 'css-loader' },
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'tbfSpecialOffers.latest.[ext]',
+            },
+          },
         ],
       },
       {

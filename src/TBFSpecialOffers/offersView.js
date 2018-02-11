@@ -1,6 +1,6 @@
 import offerElementClickEventHandler from './offerEvents';
-import { MISSING_IMAGE_URL } from '../constants';
-import style from '../index.css';
+import { MISSING_IMAGE_URL, PROD_STYLE_URL, DEV_STYLE_URL } from '../constants';
+import '../index.css';
 
 class OffersView {
   constructor(rootElement, offersStorage, options) {
@@ -91,7 +91,11 @@ class OffersView {
   assignCSS() {
     if (this.options.defaultCSS !== false) {
       this.rootElement.classList.add('tbf-so-special-offers');
-      style.use();
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = (window.location.hostname === 'localhost') ? DEV_STYLE_URL : PROD_STYLE_URL;
+      document.head.appendChild(link);
     }
   }
 
