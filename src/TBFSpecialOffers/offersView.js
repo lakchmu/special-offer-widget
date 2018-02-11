@@ -1,4 +1,4 @@
-import offerElementClickEventHandler from './offerEvents';
+import expandSpecialOfferDescription from './offerEvents';
 import { MISSING_IMAGE_URL, PROD_STYLE_URL, DEV_STYLE_URL } from '../constants';
 import '../index.css';
 
@@ -103,8 +103,7 @@ class OffersView {
     if (this.options.defaultEvents !== false) {
       const offerElements = this.rootElement.querySelectorAll('.tbf-so-offer__more-link');
       offerElements.forEach((offerElement) => {
-        offerElement.addEventListener('click', offerElementClickEventHandler);
-        offerElement.removeEventListener('unload', offerElementClickEventHandler);
+        offerElement.addEventListener('click', expandSpecialOfferDescription);
       });
     }
   }

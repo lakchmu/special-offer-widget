@@ -1,4 +1,4 @@
-export default function offerElementClickEventHandler() {
+export default function expandSpecialOfferDescription() {
   let parentOffer = this.parentElement;
   while (!parentOffer.classList.contains('tbf-so-offer') &&
          !parentOffer.classList.contains('tbf-special-offers')) {
