@@ -1,6 +1,7 @@
 module.exports = {
   credentials: './aws-credentials.json',
-  bucketName: 'special-offer.widgets.thebookingfactory.com',
+  demoBucketName: 'special-offer.widgets.thebookingfactory.com',
+  productionBucketName: 'tbf-libraries',
   source: './dist',
 };
 

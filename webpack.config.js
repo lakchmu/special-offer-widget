@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    tbfSpecailOffers: './src/index.js',
+    tbfSpecialOffers: './src/index.js',
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins: [],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].latest.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {

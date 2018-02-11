@@ -3,15 +3,14 @@ const fs = require('fs');
 const mime = require('mime');
 const config = require('../aws-upload.conf.js');
 
+const mode = process.argv[process.argv.length - 1];
 AWS.config.loadFromPath(config.credentials);
 
-const s3obj = new AWS.S3({ params: { Bucket: config.bucketName } });
-
-function upload(prefix) {
+function upload(prefix, s3obj, ignoredFile) {
   fs.readdirSync(`${config.source}/${prefix}`).forEach((filename) => {
     if (fs.lstatSync(`${config.source}/${prefix}${filename}`).isDirectory()) {
       upload(`${filename}/`);
-    } else {
+    } else if (filename !== ignoredFile) {
       const params = {
         Body: fs.createReadStream(`${config.source}/${prefix}${filename}`),
         Key: prefix + filename,
@@ -30,24 +29,41 @@ function upload(prefix) {
   });
 }
 
-s3obj.listObjects({
-  Bucket: config.bucketName,
-}, (err, data) => {
-  if (data.Contents.length === 0) {
-    upload('');
-  } else {
-    s3obj.deleteObjects({
-      Bucket: config.bucketName,
-      Delete: {
-        Objects: data.Contents.map((el) => {
-          return { Key: el.Key };
-        }),
-      },
-    }, (error) => {
-      if (error == null) {
-        upload('');
-      }
-    });
-  }
-});
+let ignoredFile;
+let Bucket;
+switch (mode) {
+  case 'demo':
+    Bucket = config.demoBucketName;
+    ignoredFile = 'tbfSpecialOffers.latest.js';
+    break;
+  case 'prod':
+    Bucket = config.productionBucketName;
+    ignoredFile = 'index.html';
+    break;
+  default:
+    throw new Error(`Unknown parameter ${mode}`);
+}
 
+const s3obj = new AWS.S3({ params: { Bucket } });
+upload('', s3obj, ignoredFile);
+
+// s3obj.listObjects({
+//   Bucket: config.bucketName,
+// }, (err, data) => {
+//   if (data.Contents.length === 0) {
+//     upload('');
+//   } else {
+//     s3obj.deleteObjects({
+//       Bucket: config.bucketName,
+//       Delete: {
+//         Objects: data.Contents.map((el) => {
+//           return { Key: el.Key };
+//         }),
+//       },
+//     }, (error) => {
+//       if (error == null) {
+//         upload('');
+//       }
+//     });
+//   }
+// });
