@@ -5,6 +5,7 @@
   max-width: 942px;
   width: 100%;
   margin: auto;
+  position: relative;
 }
 
 .tbf-so-offer {
@@ -123,6 +124,7 @@
   width: 100%;
   overflow:hidden;
   position: relative;
+  white-space: normal;
 }
 
 .tbf-so-offer .tbf-so-offer__description {
@@ -204,9 +206,94 @@
   height: 48px;
 }
 
+.tbf-so-carousel-content {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.tbf-so-offer-list {
+  display: inline-block;
+  font-size: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow-y: hidden;
+}
+
+.tbf-so-offer-list .tbf-so-offer {
+  padding: 33px 10px 60px;
+}
+
+.tbf-so-offer-list .tbf-so-offer {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 952px;
+}
+
+.tbf-so-carousel-indicators{
+  display: inline-block;
+  line-height: 50px;
+  height: 50px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.tbf-so-carousel-indicator{
+  background-color: rgba(128,128,128,0.4);;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 3px;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.tbf-so-carousel-indicator.active{
+  background: linear-gradient(90deg, #FFB32D 0%, #F28248 100%);;
+}
+
+.tbf-so-carousel-indicators .tbf-so-arrow[data-direction="to-left"],
+.tbf-so-carousel-indicators .tbf-so-arrow[data-direction="to-right"] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid #F28248;
+  cursor: pointer;
+  opacity: 1;
+  vertical-align: middle;
+}
+
+.tbf-so-carousel-indicators .tbf-so-arrow[data-direction="to-left"] {
+  left: 0;
+  border-left: 2px solid #F28248;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  margin-right: 37px;
+}
+
+.tbf-so-carousel-indicators .tbf-so-arrow[data-direction="to-right"] {
+  right: 0;
+  border-right: 2px solid #F28248;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-left: 37px;
+}
+
 @media only screen and (max-width : 975px) {
   .tbf-so-special-offers {
     max-width: 500px;
+  }
+
+  .tbf-so-offer-list .tbf-so-offer {
+    width: 500px;
   }
   
   .tbf-so-offer .tbf-so-offer__content {
@@ -224,6 +311,7 @@
 
   .tbf-so-offer .tbf-so-offer__content-text {
     border: 1px solid #DCDEE6;
+    display: block;
     padding: 45px 20px 20px 20px;
     margin-left: 0;
     width: 100%;
@@ -239,6 +327,15 @@
 }
 
 @media only screen and (max-width : 500px) {
+  .tbf-so-offer-list .tbf-so-offer {
+    padding-right: 35px;
+    width: 100vw;
+  }
+
+  .tbf-so-offer-list .tbf-so-offer .tbf-so-offer__content {
+    width: 100%;
+  }
+  
   .tbf-so-offer .tbf-so-offer__content-text {
     height: auto;
   }

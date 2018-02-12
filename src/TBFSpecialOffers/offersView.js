@@ -1,3 +1,4 @@
+import Carousel from './carousel';
 import expandSpecialOfferDescription from './offerEvents';
 import { MISSING_IMAGE_URL, PROD_STYLE_URL, DEV_STYLE_URL } from '../constants';
 import '../index.css';
@@ -11,7 +12,7 @@ class OffersView {
 
     // Action pipeline
     this.assignCSS();
-    this.createList();
+    this.createView();
     this.assignEvents();
   }
 
@@ -21,6 +22,22 @@ class OffersView {
       throw new Error(`Element "${selector}" not found`);
     }
     return targetElement;
+  }
+
+  createView() {
+    console.log(this.options.view);
+    switch (this.options.view) {
+      case 'carousel':
+        this.createCarousel();
+        break;
+      default:
+        this.createList();
+        break;
+    }
+  }
+
+  createCarousel() {
+    this.carousel = new Carousel(this);
   }
 
   createList() {
