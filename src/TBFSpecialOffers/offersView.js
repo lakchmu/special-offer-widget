@@ -25,7 +25,6 @@ class OffersView {
   }
 
   createView() {
-    console.log(this.options.view);
     switch (this.options.view) {
       case 'carousel':
         this.createCarousel();
