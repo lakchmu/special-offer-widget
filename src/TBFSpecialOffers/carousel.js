@@ -76,7 +76,7 @@ class Carousel {
       default:
         break;
     }
-    return this.offerView.rootElement.querySelector(`[data-number-offer='${numberOfferNextIndicator}'`);
+    return this.offerView.rootElement.querySelector(`[data-number-offer='${numberOfferNextIndicator}']`);
   }
 
   changeActiveIndicator(indicator) {
