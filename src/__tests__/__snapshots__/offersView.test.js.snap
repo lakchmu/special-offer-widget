@@ -24,7 +24,7 @@ exports[`Testing class methods Testing default render function 1`] = `
         
               
         <img
-          class="tbf-so-offer__image"
+          class="tbf-so-offer__image "
           src="https://s3.amazonaws.com/buuqit-dev/special_offers/images/000/000/009/public/Room2.jpg?1515606281"
         />
         
@@ -119,6 +119,119 @@ exports[`Testing class methods Testing default render function 1`] = `
   </div>
   
       
+
+        
+  <div
+    class="tbf-so-offer"
+  >
+    
+          
+    <div
+      class="tbf-so-offer__content"
+    >
+      
+            
+      <div
+        class="tbf-so-offer__content-image"
+      >
+        
+              
+        <img
+          class="tbf-so-offer__image "
+          src="https://s3.amazonaws.com/buuqit-dev/special_offers/images/000/000/006/public/Room7.jpg?1512864349"
+        />
+        
+            
+      </div>
+      
+            
+      <div
+        class="tbf-so-offer__content-text"
+      >
+        
+              
+        <div
+          class="tbf-so-offer__title"
+        >
+          Stay 3 Nights Save 15%
+        </div>
+        
+              
+        <div
+          class="tbf-so-offer__wrapper-description"
+        >
+          
+                
+          <div
+            class="tbf-so-offer__short-description"
+          >
+            Stay 3 Nights Save 15%
+          </div>
+          
+                
+          <div
+            class="tbf-so-offer__description"
+          >
+            Stay for 3 nights or more and save 15%. Save a little by staying with us a bit longer
+          </div>
+          
+              
+        </div>
+        
+              
+        <div
+          class="tbf-so-offer__footer"
+        >
+          
+                
+          <span
+            class="tbf-so-offer__dates"
+          >
+            
+                  
+            <i
+              class="tbf-so-offer__icon-calendar"
+            />
+            Jun 4 - Aug 31
+                
+          </span>
+          
+                
+          <span
+            class="tbf-so-offer__control-links"
+          >
+            
+                  
+            <button
+              class="tbf-so-offer__more-link"
+            >
+              More
+            </button>
+            
+                  
+            <a
+              class="tbf-so-offer__booking-link"
+              href="https://app.thebookingfactory.com/Spilman-Hotel/book/__special_offer_6"
+            >
+              Book now
+            </a>
+            
+                
+          </span>
+          
+              
+        </div>
+        
+            
+      </div>
+      
+          
+    </div>
+    
+        
+  </div>
+  
+      
 </div>
 `;
 
@@ -135,6 +248,21 @@ exports[`Testing custom render function Testing rendering 1`] = `
       class="tbf-so-offer__title"
     >
       Last Minute Booking
+    </div>
+    
+
+  </div>
+  
+
+  <div
+    class="tbf-so-offer"
+  >
+    
+
+    <div
+      class="tbf-so-offer__title"
+    >
+      Stay 3 Nights Save 15%
     </div>
     
 

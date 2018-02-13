@@ -99,7 +99,7 @@ describe('Testing class methods', () => {
 describe('Testing event listeners', () => {
   it('Testing click event by "More" button', () => {
     document.body.innerHTML = '<div class="special-offers"></div>';
-    expect.assertions(2);
+    expect.assertions(4);
     return setup().then((offersStorage) => {
       const offersView = new OffersView('.special-offers', offersStorage, getOptions('empty'));
       const root = document.querySelector('.special-offers');
