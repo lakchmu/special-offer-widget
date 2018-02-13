@@ -79,7 +79,7 @@ class OffersView {
         <div class="tbf-so-offer">
           <div class="tbf-so-offer__content">
             <div class="tbf-so-offer__content-image">
-              <img class="tbf-so-offer__image ${imageLink === MISSING_IMAGE_URL ? 'tbf-so-offer__missing-image' : ''}" src="${imageLink}" />
+              <img class="tbf-so-offer__image ${this.getImageLink(imageLink) === MISSING_IMAGE_URL ? 'tbf-so-offer__missing-image' : ''}" src="${this.getImageLink(imageLink)}" />
             </div>
             <div class="tbf-so-offer__content-text">
               <div class="tbf-so-offer__title">${title}</div>
@@ -102,6 +102,11 @@ class OffersView {
       `;
     }
     return template;
+  }
+
+  getImageLink(imageLink) {
+    const missingImageUrl = (this.options.missingImageUrl) ? this.options.missingImageUrl : MISSING_IMAGE_URL;
+    return (imageLink === '/images/public/missing.png') ? missingImageUrl : imageLink;
   }
 
   assignCSS() {

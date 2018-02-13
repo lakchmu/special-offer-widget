@@ -11,9 +11,8 @@ class OfferModel {
       discount_value,
       discount_type,
       link,
+      image,
     } = offer;
-
-    const image = (offer.image === '/images/public/missing.png') ? MISSING_IMAGE_URL : offer.image;
 
     this.title = title;
     this.shortDescription = short_description;
