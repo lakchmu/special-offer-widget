@@ -315,10 +315,20 @@
     padding: 45px 20px 20px 20px;
     margin-left: 0;
     width: 100%;
+    max-height: none;
+    height: auto;
   }
 
   .tbf-so-offer.tbf-so-open .tbf-so-offer__content-text {
     max-height: 2215px;
+  }
+
+  .tbf-so-offer .tbf-so-offer__title {
+    white-space: normal;
+  }
+
+  .tbf-so-offer .tbf-so-offer__title::after {
+    content: none;
   }
 
   .tbf-so-offer.tbf-so-open .tbf-so-offer__description {
@@ -334,10 +344,6 @@
 
   .tbf-so-offer-list .tbf-so-offer .tbf-so-offer__content {
     width: 100%;
-  }
-  
-  .tbf-so-offer .tbf-so-offer__content-text {
-    height: auto;
   }
   
   .tbf-so-offer .tbf-so-offer__wrapper-description {
