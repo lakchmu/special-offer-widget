@@ -17,13 +17,32 @@
       text-align: center;
     }
     h2 {
+      color: #424242;
+      font-family: 'Roboto', sans-serif;
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 1.62;
+      text-align: center;
+    }
+    h3 {
       color: #939ea8;
       font-family: 'Roboto', sans-serif;
       font-size: 20px;
       font-weight: 300;
-      text-indent: 20px;
       line-height: 1.62;
       text-align: center;
+    }
+    nav {
+      text-align: center;
+    }
+    nav a{
+      text-decoration: none;
+      color: #939ea8;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.62;
+      margin: 0 5px;
     }
     .code-example {
       background-color: #000;
@@ -38,21 +57,79 @@
   </style>
   <body>
     <h1>TBF Special Offers Widget</h1>
-    <h2>Code example in body tag</h2>
+    <nav>
+      <a href="#default">Default settings</a>
+      <a href="#carousel">Carousel</a>
+      <a href="#without-default-styles">Without default styles</a>
+      <a href="#without-default-events">Without default events</a>
+      <a href="#with-your-placeholder-image">With your placeholder image</a>
+    </nav>
+    <h2 id="default">Default settings</h2>
+    <h3>Code example in body tag</h3>
     <pre class="code-example">
         &lt;div class="special-offers"&gt;&lt;/div&gt;
         &lt;script src="https://tbf-libraries.s3-eu-west-1.amazonaws.com/tbfSpecialOffers.latest.js"&gt;&lt;/script&gt;
         &lt;script&gt;
         <span>  var token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';</span>
         <span>  TBFSpecialOffer('.special-offers', token);</span>
-        &lt;/script&gt;
-    </pre>
-    <h2>Widget example</h2>
+        &lt;/script&gt;</pre>
+    <h3>Widget example</h3>
     <div class="special-offers"></div>
-    <script src="https://tbf-libraries.s3-eu-west-1.amazonaws.com/tbfSpecialOffers.latest.js"></script>
+    <script src="./tbfSpecialOffers.latest.js"></script>
     <script>
       var token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';
       TBFSpecialOffer('.special-offers', token);
     </script>
+
+    <h2 id="carousel">Carousel</h2>
+    <h3>Code example in body tag</h3>
+    <pre class="code-example">
+        &lt;div class="special-offers"&gt;&lt;/div&gt;
+        &lt;script src="https://tbf-libraries.s3-eu-west-1.amazonaws.com/tbfSpecialOffers.latest.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+        <span>  var token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';</span>
+        <span>  var options = { view: 'carousel' };</span>
+        <span>  TBFSpecialOffer('.special-offers', token, options);</span>
+        &lt;/script&gt;</pre>
+    <h3>Widget example</h3>
+    <div class="special-offers-carousel"></div>
+    <script>
+      var token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';
+      var options = { view: 'carousel' };
+      TBFSpecialOffer('.special-offers-carousel', token, options);
+    </script>
+
+    <h2 id="without-default-styles">Without default styles</h2>
+    <h3>Code example in body tag</h3>
+    <pre class="code-example">
+        &lt;div class="special-offers"&gt;&lt;/div&gt;
+        &lt;script src="https://tbf-libraries.s3-eu-west-1.amazonaws.com/tbfSpecialOffers.latest.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+        <span>  var token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';</span>
+        <span>  var options = { defaultCSS: false };</span>
+        <span>  TBFSpecialOffer('.special-offers', token, options);</span>
+        &lt;/script&gt;</pre>
+
+    <h2 id="without-default-events">Without default events</h2>
+    <h3>Code example in body tag</h3>
+    <pre class="code-example">
+        &lt;div class="special-offers"&gt;&lt;/div&gt;
+        &lt;script src="https://tbf-libraries.s3-eu-west-1.amazonaws.com/tbfSpecialOffers.latest.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+        <span>  var token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';</span>
+        <span>  var options = { defaultEvents: false };</span>
+        <span>  TBFSpecialOffer('.special-offers', token, options);</span>
+        &lt;/script&gt;</pre>
+
+    <h2 id="with-your-placeholder-image">With your placeholder image</h2>
+    <h3>Code example in body tag</h3>
+    <pre class="code-example">
+        &lt;div class="special-offers"&gt;&lt;/div&gt;
+        &lt;script src="https://tbf-libraries.s3-eu-west-1.amazonaws.com/tbfSpecialOffers.latest.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+        <span>  var token = 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0';</span>
+        <span>  var options = { missingImageUrl: 'url-to-your-placeholder-image' };</span>
+        <span>  TBFSpecialOffer('.special-offers', token, options);</span>
+        &lt;/script&gt;</pre>
   </body>
 </html>
