@@ -4,7 +4,6 @@ const mime = require('mime');
 const config = require('../aws-upload.conf.js');
 
 const mode = process.argv[process.argv.length - 1];
-AWS.config.loadFromPath(config.credentials);
 
 function upload(prefix, s3obj, ignoredFile) {
   fs.readdirSync(`${config.source}/${prefix}`).forEach((filename) => {
