@@ -42,6 +42,6 @@
     "build": "webpack",
     "start": "webpack-dev-server --open",
     "test": "jest",
-    "deploy": "webpack && node ./scripts/deploy.js"
+    "deploy": "node ./scripts/deploy.js"
   }
 }
