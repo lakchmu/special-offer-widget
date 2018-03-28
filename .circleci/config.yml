@@ -22,6 +22,15 @@ jobs:
     working_directory: ~/special-offer-widget
     steps:
       - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Deploy to S3 if tests pass and branch is Master
           command: npm run deploy --prod
