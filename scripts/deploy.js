@@ -3,13 +3,11 @@ const fs = require('fs');
 const mime = require('mime');
 const config = require('../aws-upload.conf.js');
 
-const mode = 'prod';
-
-function upload(prefix, s3obj, ignoredFile) {
+function upload(prefix, s3obj) {
   fs.readdirSync(`${config.source}/${prefix}`).forEach((filename) => {
     if (fs.lstatSync(`${config.source}/${prefix}${filename}`).isDirectory()) {
       upload(`${filename}/`);
-    } else if (filename !== ignoredFile) {
+    } else {
       const params = {
         Body: fs.createReadStream(`${config.source}/${prefix}${filename}`),
         Key: prefix + filename,
@@ -28,23 +26,8 @@ function upload(prefix, s3obj, ignoredFile) {
   });
 }
 
-let ignoredFile;
-let Bucket;
-switch (mode) {
-  case 'demo':
-    Bucket = config.demoBucketName;
-    ignoredFile = 'tbfSpecialOffers.latest.js';
-    break;
-  case 'prod':
-    Bucket = config.productionBucketName;
-    ignoredFile = 'index.html';
-    break;
-  default:
-    throw new Error(`Unknown parameter ${mode}`);
-}
-
-const s3obj = new AWS.S3({ params: { Bucket } });
-upload('', s3obj, ignoredFile);
+const s3obj = new AWS.S3({ params: { Bucket: config.bucketName } });
+upload('', s3obj);
 
 // s3obj.listObjects({
 //   Bucket: config.bucketName,

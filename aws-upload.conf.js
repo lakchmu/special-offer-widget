@@ -1,5 +1,4 @@
 module.exports = {
-  demoBucketName: 'special-offer.widgets.thebookingfactory.com',
-  productionBucketName: 'tbf-libraries',
+  bucketName: 'tbf-libraries',
   source: './dist',
 };
