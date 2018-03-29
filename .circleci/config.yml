@@ -1,6 +1,8 @@
 version: 2
 jobs:
   build-job:
+    environment:
+      CC_TEST_REPORTER_ID: 5ff632abb59929ed2ce5870036140285ae7b8d5595290ca77c06259827b5afee
     docker:
       - image: circleci/node:latest-browsers
     working_directory: ~/special-offer-widget
@@ -11,11 +13,15 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
       - run: npm install
+      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./test-reporter
+      - run: chmod +x ./test-reporter
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: ./test-reporter before-build
       - run: npm run test
+      - run: ./test-reporter after-build --exit-code $?
   deploy-job:
     docker:
       - image: circleci/node:latest-browsers
