@@ -3,3 +3,4 @@ aws-credentials.json
 dist/tbfSpecialOffers.latest.js
 dist/tbfSpecialOffers.latest.css
 widget_structure.txt
+coverage
