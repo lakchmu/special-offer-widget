@@ -140,27 +140,5 @@ describe('Testing custom render function', () => {
       expect(testWrapper).toThrow();
     });
   });
-
-  it('Custom render function return not a string', () => {
-    document.body.innerHTML = '<div class="special-offers"></div>';
-    expect.assertions(1);
-    return setup().then((offersStorage) => {
-      function testWrapper() {
-        return new OffersView('.special-offers', offersStorage, getOptions('render-function-return-not-a-string'));
-      }
-      expect(testWrapper).toThrow();
-    });
-  });
-
-  it('Custom render function without offerModel parameter', () => {
-    document.body.innerHTML = '<div class="special-offers"></div>';
-    expect.assertions(1);
-    return setup().then((offersStorage) => {
-      function testWrapper() {
-        return new OffersView('.special-offers', offersStorage, getOptions('render-function-without-offerModel-parameter'));
-      }
-      expect(testWrapper).toThrow();
-    });
-  });
 });
 
