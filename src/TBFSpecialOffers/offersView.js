@@ -1,6 +1,6 @@
 import Carousel from './carousel';
 import expandSpecialOfferDescription from './offerEvents';
-import { MISSING_IMAGE_URL, PROD_STYLE_URL, DEV_STYLE_URL } from '../constants';
+import { MISSING_IMAGE_URL, PROD_STYLE_URL, DEV_STYLE_URL, GET_DEFAULT_TEAMPLATE } from '../constants';
 import '../index.css';
 
 class OffersView {
@@ -45,67 +45,40 @@ class OffersView {
       .join('\n');
   }
 
-  renderTemplate(offerModel) {
+  renderCustomTemplate(offerModel) {
     let template;
-    if (this.options.renderTemplate) {
-      if (typeof this.options.renderTemplate !== 'function') {
-        throw new Error('options.renderTemplate is not a function');
-      }
-      if (this.options.renderTemplate.length !== 1) {
-        throw new Error('options.renderTemplate must take one parameter');
-      }
-      template = this.options.renderTemplate(offerModel);
-      if (typeof template !== 'string') {
-        throw new Error('options.renderTemplate must return a string');
-      }
+    if (typeof this.options.renderTemplate !== 'function') {
+      throw new Error('options.renderTemplate is not a function');
     } else {
-      const {
-        title,
-        shortDescription,
-        dateFrom,
-        dateTo,
-        description,
-        imageLink,
-        discountValue,
-        discountType,
-        bookingLink,
-      } = offerModel;
-
-      const currentLocale = window.navigator.userLanguage || window.navigator.language;
-      const localizedDateFrom = dateFrom.toLocaleString(currentLocale, { month: 'short', day: 'numeric' });
-      const localizedDateTo = dateTo.toLocaleString(currentLocale, { month: 'short', day: 'numeric' });
-
-      template = `
-        <div class="tbf-so-offer">
-          <div class="tbf-so-offer__content">
-            <div class="tbf-so-offer__content-image">
-              <img class="tbf-so-offer__image ${this.getImageLink(imageLink) === MISSING_IMAGE_URL ? 'tbf-so-offer__missing-image' : ''}" src="${this.getImageLink(imageLink)}" />
-            </div>
-            <div class="tbf-so-offer__content-text">
-              <div class="tbf-so-offer__title">${title}</div>
-              <div class="tbf-so-offer__wrapper-description">
-                <div class="tbf-so-offer__short-description">${shortDescription}</div>
-                <div class="tbf-so-offer__description">${description}</div>
-              </div>
-              <div class="tbf-so-offer__footer">
-                <span class="tbf-so-offer__dates">
-                  <i class="tbf-so-offer__icon-calendar"></i>${localizedDateFrom} - ${localizedDateTo}
-                </span>
-                <span class="tbf-so-offer__control-links">
-                  <button class="tbf-so-offer__more-link">More</button>
-                  <a class="tbf-so-offer__booking-link" href="${bookingLink}">Book now</a>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
+      template = this.options.renderTemplate(offerModel);
     }
     return template;
   }
 
+  renderDefaultTemplate(offerModel) {
+    const currentLocale = window.navigator.userLanguage || window.navigator.language;
+    const dataOption = { month: 'short', day: 'numeric' };
+    const localizedDateFrom = offerModel.dateFrom.toLocaleString(currentLocale, dataOption);
+    const localizedDateTo = offerModel.dateTo.toLocaleString(currentLocale, dataOption);
+
+    return GET_DEFAULT_TEAMPLATE(
+      localizedDateFrom,
+      localizedDateTo,
+      this.getImageLink(offerModel.imageLink),
+      offerModel,
+    );
+  }
+
+  renderTemplate(offerModel) {
+    return (this.options.renderTemplate) ?
+      this.renderCustomTemplate(offerModel) :
+      this.renderDefaultTemplate(offerModel);
+  }
+
   getImageLink(imageLink) {
-    const missingImageUrl = (this.options.missingImageUrl) ? this.options.missingImageUrl : MISSING_IMAGE_URL;
+    const missingImageUrl = (this.options.missingImageUrl) ?
+      this.options.missingImageUrl :
+      MISSING_IMAGE_URL;
     return (imageLink === '/images/public/missing.png') ? missingImageUrl : imageLink;
   }
 
