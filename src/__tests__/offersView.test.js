@@ -32,31 +32,6 @@ function getOptions(key) {
         renderTemplate: 'not function',
       };
       break;
-    case 'render-function-return-not-a-string':
-      options = {
-        renderTemplate: (offerModel) => {
-          const { title } = offerModel;
-          return () => `
-            <div class="tbf-so-offer">
-                <div class="tbf-so-offer__title">${title}</div>
-            </div>
-            `;
-        },
-      };
-      break;
-    case 'render-function-without-offerModel-parameter':
-      options = {
-        renderTemplate: () => {
-          const title = 'Title';
-          const template = `
-            <div class="tbf-so-offer">
-                <div class="tbf-so-offer__title">${title}</div>
-            </div>
-          `;
-          return template;
-        },
-      };
-      break;
     default:
       break;
   }
