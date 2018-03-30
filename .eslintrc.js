@@ -1,5 +1,5 @@
 module.exports = {
-  "extends": "airbnb-base",
+  "extends": ["airbnb-base", "plugin:jest/recommended"],
   "env": {
     "browser": true,
     "node": true,
@@ -11,5 +11,6 @@ module.exports = {
   "rules": {
     "no-alert": 0,
     "no-console": ["error", { allow: ["warn", "error"] }],
-  }
+  },
+  "plugins": ["jest"]
 };
