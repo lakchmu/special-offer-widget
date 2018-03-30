@@ -76,7 +76,9 @@ class OffersView {
   }
 
   getImageLink(imageLink) {
-    const missingImageUrl = (this.options.missingImageUrl) ? this.options.missingImageUrl : MISSING_IMAGE_URL;
+    const missingImageUrl = (this.options.missingImageUrl) ?
+      this.options.missingImageUrl :
+      MISSING_IMAGE_URL;
     return (imageLink === '/images/public/missing.png') ? missingImageUrl : imageLink;
   }
 
