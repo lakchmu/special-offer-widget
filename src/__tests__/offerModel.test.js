@@ -1,7 +1,7 @@
 /* global test, expect */
 
 import OfferModel from '../TBFSpecialOffers/offerModel';
-import { MOCK_GET_OFFERS } from '../TBFSpecialOffers/__mocks__/constants';
+import MOCK_GET_OFFERS from '../TBFSpecialOffers/__mocks__/constants';
 
 function setup() {
   const testOffer = JSON.parse(MOCK_GET_OFFERS).special_offers[0];

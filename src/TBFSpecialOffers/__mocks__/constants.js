@@ -28,4 +28,4 @@ const MOCK_GET_OFFERS = `
   ]
 }`;
 
-export { MOCK_GET_OFFERS };
+export default MOCK_GET_OFFERS;
