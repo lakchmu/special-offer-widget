@@ -4,7 +4,9 @@
   "description": "TBF Special Offers widget",
   "main": "index.js",
   "author": "Kurmaeva Daria",
-  "dependencies": {},
+  "dependencies": {
+    "whatwg-fetch": "^2.0.3"
+  },
   "devDependencies": {
     "aws-sdk": "^2.189.0",
     "babel-core": "^6.26.0",
@@ -21,8 +23,7 @@
     "jest": "^22.1.4",
     "mime": "^2.2.0",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1",
-    "whatwg-fetch": "^2.0.3"
+    "webpack-dev-server": "^2.11.1"
   },
   "jest": {
     "moduleFileExtensions": [
