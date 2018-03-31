@@ -1,7 +1,7 @@
-jest.mock('../TBFSpecialOffers/request');
-
 import getOffers from '../TBFSpecialOffers/getOffers';
 import OffersStorage from '../TBFSpecialOffers/offersStorage';
+
+jest.mock('../TBFSpecialOffers/request');
 
 function setup() {
   return { token: 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0', filters: {} };

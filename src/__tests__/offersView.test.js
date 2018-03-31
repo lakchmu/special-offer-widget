@@ -1,8 +1,8 @@
-jest.mock('../TBFSpecialOffers/request');
-jest.mock('../index.css');
-
 import getOffers from '../TBFSpecialOffers/getOffers';
 import OffersView from '../TBFSpecialOffers/offersView';
+
+jest.mock('../TBFSpecialOffers/request');
+jest.mock('../index.css');
 
 function setup() {
   const data = {
