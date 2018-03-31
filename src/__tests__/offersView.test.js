@@ -9,9 +9,8 @@ jest.mock('../index.css');
 function setup() {
   const data = {
     token: 'KO96pMbbIBTQPl7vnoJMXmIrEl2cYoUZS83QlL0Abu0',
-    filters: {},
   };
-  return getOffers(data.token, data.filters);
+  return getOffers(data.token);
 }
 
 function getOptions(key) {

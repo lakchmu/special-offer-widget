@@ -2,7 +2,7 @@
 
 import OfferModel from '../TBFSpecialOffers/offerModel';
 import OffersStorage from '../TBFSpecialOffers/offersStorage';
-import { MOCK_GET_OFFERS } from '../TBFSpecialOffers/__mocks__/constants';
+import MOCK_GET_OFFERS from '../TBFSpecialOffers/__mocks__/constants';
 
 function setup() {
   const testOffersList = JSON.parse(MOCK_GET_OFFERS).special_offers;

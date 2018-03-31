@@ -1,4 +1,4 @@
-import { MOCK_GET_OFFERS } from './constants';
+import MOCK_GET_OFFERS from './constants';
 import { API_END_POINT, API_METHOD_SPECIAL_OFFERS } from '../../constants';
 
 function request(url, method, tokenValue) {

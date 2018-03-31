@@ -20,8 +20,8 @@ function upload(prefix, s3obj) {
 
       s3obj
         .upload(params)
-        .on('httpUploadProgress', evt => console.log(evt))
-        .send((err, data) => console.log(err, data));
+        .on('httpUploadProgress', evt => console.log(evt)) // eslint-disable-line no-console
+        .send((err, data) => console.log(err, data)); // eslint-disable-line no-console
     }
   });
 }
