@@ -1,8 +1,10 @@
-jest.mock('../TBFSpecialOffers/request');
-jest.mock('../index.css');
+/* global jest, describe, it, expect */
 
 import getOffers from '../TBFSpecialOffers/getOffers';
 import OffersView from '../TBFSpecialOffers/offersView';
+
+jest.mock('../TBFSpecialOffers/request');
+jest.mock('../index.css');
 
 function setup() {
   const data = {
@@ -38,82 +40,74 @@ function getOptions(key) {
   return options;
 }
 
+function setupTest(rootElement, optionKey) {
+  document.body.innerHTML = '<div class="special-offers"></div>';
+  return setup()
+    .then(offersStorage => new OffersView(rootElement, offersStorage, getOptions(optionKey)));
+}
+
+function setupWrapperTest(rootElement, optionKey) {
+  document.body.innerHTML = '<div class="special-offers"></div>';
+  return setup()
+    .then(offersStorage => function testWrapper() {
+      return new OffersView(rootElement, offersStorage, getOptions(optionKey));
+    });
+}
+
 describe('Testing class methods', () => {
   it('Root element for widget does not exist', () => {
-    document.body.innerHTML = '<div class="special-offers"></div>';
     expect.assertions(1);
-    return setup().then((offersStorage) => {
-      function testWrapper() {
-        return new OffersView('.not-existing-root-element', offersStorage, getOptions('empty'));
-      }
-      expect(testWrapper).toThrow();
-    });
+    return setupWrapperTest('.not-existing-root-element', 'empty')
+      .then(testWrapper => expect(testWrapper).toThrow());
   });
 
   it('Testing default render function', () => {
-    document.body.innerHTML = '<div class="special-offers"></div>';
-    const root = document.querySelector('.special-offers');
     expect.assertions(1);
-    return setup().then((offersStorage) => {
-      const offersView = new OffersView('.special-offers', offersStorage, getOptions('empty'));
-      expect(root).toMatchSnapshot();
-    });
+    return setupTest('.special-offers', 'empty')
+      .then(offersView => expect(offersView.rootElement).toMatchSnapshot());
   });
 
   it('Testing adding css class to root element', () => {
-    document.body.innerHTML = '<div class="special-offers"></div>';
-    const root = document.querySelector('.special-offers');
     expect.assertions(1);
-    return setup().then((offersStorage) => {
-      const offersView = new OffersView('.special-offers', offersStorage, getOptions('empty'));
-      expect(root.classList.contains('tbf-so-special-offers')).toMatchSnapshot();
-    });
-  });
-});
-
-describe('Testing event listeners', () => {
-  it('Testing click event by "More" button', () => {
-    document.body.innerHTML = '<div class="special-offers"></div>';
-    expect.assertions(4);
-    return setup().then((offersStorage) => {
-      const offersView = new OffersView('.special-offers', offersStorage, getOptions('empty'));
-      const root = document.querySelector('.special-offers');
-      const moreButtons = root.querySelectorAll('.tbf-so-offer__more-link');
-      moreButtons.forEach((moreButton) => {
-        let parentOffer = moreButton.parentElement;
-        while (!parentOffer.classList.contains('tbf-so-offer') &&
-          !parentOffer.classList.contains('tbf-special-offers')) {
-          parentOffer = parentOffer.parentElement;
-        }
-        moreButton.click();
-        expect(parentOffer.classList.contains('tbf-so-open')).toBeTruthy();
-        moreButton.click();
-        expect(parentOffer.classList.contains('tbf-so-open')).not.toBeTruthy();
+    return setupTest('.special-offers', 'empty')
+      .then((offersView) => {
+        const containsClass = offersView.rootElement.classList.contains('tbf-so-special-offers');
+        return expect(containsClass).toBeTruthy();
       });
-    });
   });
 });
 
 describe('Testing custom render function', () => {
   it('Testing rendering', () => {
-    document.body.innerHTML = '<div class="special-offers"></div>';
-    const root = document.querySelector('.special-offers');
     expect.assertions(1);
-    return setup().then((offersStorage) => {
-      const offersView = new OffersView('.special-offers', offersStorage, getOptions('normal-render-function'));
-      expect(root).toMatchSnapshot();
-    });
+    return setupTest('.special-offers', 'normal-render-function')
+      .then(offersView => expect(offersView.rootElement).toMatchSnapshot());
   });
 
   it('Custom render function is not a function', () => {
-    document.body.innerHTML = '<div class="special-offers"></div>';
     expect.assertions(1);
-    return setup().then((offersStorage) => {
-      function testWrapper() {
-        return new OffersView('.special-offers', offersStorage, getOptions('not function'));
-      }
-      expect(testWrapper).toThrow();
-    });
+    return setupWrapperTest('.special-offers', 'not function')
+      .then(testWrapper => expect(testWrapper).toThrow());
   });
 });
 
+describe('Testing event listeners', () => {
+  it('Testing click event by "More" button', () => {
+    expect.assertions(4);
+    return setupTest('.special-offers', 'empty')
+      .then((offersView) => {
+        const moreButtons = offersView.rootElement.querySelectorAll('.tbf-so-offer__more-link');
+        moreButtons.forEach((moreButton) => {
+          let parentOffer = moreButton.parentElement;
+          while (!parentOffer.classList.contains('tbf-so-offer') &&
+            !parentOffer.classList.contains('tbf-special-offers')) {
+            parentOffer = parentOffer.parentElement;
+          }
+          moreButton.click();
+          expect(parentOffer.classList.contains('tbf-so-open')).toBeTruthy();
+          moreButton.click();
+          expect(parentOffer.classList.contains('tbf-so-open')).not.toBeTruthy();
+        });
+      });
+  });
+});

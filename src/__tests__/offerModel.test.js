@@ -1,3 +1,5 @@
+/* global test, expect */
+
 import OfferModel from '../TBFSpecialOffers/offerModel';
 import { MOCK_GET_OFFERS } from '../TBFSpecialOffers/__mocks__/constants';
 
