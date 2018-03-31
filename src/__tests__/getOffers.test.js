@@ -1,3 +1,5 @@
+/* global jest, it, test, expect */
+
 import getOffers from '../TBFSpecialOffers/getOffers';
 import OffersStorage from '../TBFSpecialOffers/offersStorage';
 
