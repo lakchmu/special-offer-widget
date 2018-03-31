@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing class methods Testing adding css class to root element 1`] = `true`;
-
 exports[`Testing class methods Testing default render function 1`] = `
 <div
   class="special-offers tbf-so-special-offers"
