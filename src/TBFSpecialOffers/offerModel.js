@@ -1,5 +1,3 @@
-import { MISSING_IMAGE_URL } from '../constants';
-
 class OfferModel {
   constructor(offer) {
     const {
