@@ -2,6 +2,7 @@
 
 import getOffers from '../TBFSpecialOffers/getOffers';
 import OffersView from '../TBFSpecialOffers/offersView';
+import { GET_PARENT_OFFER } from '../constants';
 
 jest.mock('../TBFSpecialOffers/request');
 jest.mock('../index.css');
@@ -97,11 +98,7 @@ describe('Testing event listeners', () => {
       .then((offersView) => {
         const moreButtons = offersView.rootElement.querySelectorAll('.tbf-so-offer__more-link');
         moreButtons.forEach((moreButton) => {
-          let parentOffer = moreButton.parentElement;
-          while (!parentOffer.classList.contains('tbf-so-offer') &&
-            !parentOffer.classList.contains('tbf-special-offers')) {
-            parentOffer = parentOffer.parentElement;
-          }
+          const parentOffer = GET_PARENT_OFFER(moreButton);
           moreButton.click();
           expect(parentOffer.classList.contains('tbf-so-open')).toBeTruthy();
           moreButton.click();

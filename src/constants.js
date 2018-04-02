@@ -28,10 +28,18 @@ const GET_DEFAULT_TEAMPLATE = (localizedDateFrom, localizedDateTo, imageLink, of
     </div>
   </div>
 `;
+const GET_PARENT_OFFER = function getParentOffer(description) {
+  let parentOffer = description.parentElement;
+  if (!parentOffer.classList.contains('tbf-so-offer') && parentOffer !== document.body) {
+    parentOffer = getParentOffer(parentOffer);
+  }
+  return parentOffer;
+};
 
 export {
   API_END_POINT,
   API_METHOD_SPECIAL_OFFERS,
   MISSING_IMAGE_URL, PROD_STYLE_URL,
   DEV_STYLE_URL,
-  GET_DEFAULT_TEAMPLATE };
+  GET_DEFAULT_TEAMPLATE,
+  GET_PARENT_OFFER };
