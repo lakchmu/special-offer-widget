@@ -2,6 +2,7 @@
 
 import getOffers from '../TBFSpecialOffers/getOffers';
 import OffersView from '../TBFSpecialOffers/offersView';
+import expandSpecialOfferDescription from '../TBFSpecialOffers/offerEvents';
 import { GET_PARENT_OFFER } from '../constants';
 
 jest.mock('../TBFSpecialOffers/request');
@@ -27,6 +28,11 @@ function getOptions(key) {
           const template = `<div class="tbf-so-offer">\n<div class="tbf-so-offer__title">${title}</div>\n</div>`;
           return template;
         },
+      };
+      break;
+    case 'error-template':
+      options = {
+        renderTemplate: () => '<div class="tbf-special-offers"><button class="tbf-so-offer__more-link"></button></div>',
       };
       break;
     case 'not function':
@@ -104,6 +110,18 @@ describe('Testing event listeners', () => {
           moreButton.click();
           expect(parentOffer.classList.contains('tbf-so-open')).not.toBeTruthy();
         });
+      });
+  });
+
+  it('Testing event by "More" button', () => {
+    expect.assertions(1);
+    return setupTest('.special-offers', 'error-template')
+      .then((offersView) => {
+        const moreButton = offersView.rootElement.querySelector('.tbf-so-offer__more-link');
+        function testWrapper() {
+          return expandSpecialOfferDescription.apply(moreButton);
+        }
+        expect(testWrapper).toThrow();
       });
   });
 });
