@@ -3,7 +3,7 @@
 import getOffers from '../TBFSpecialOffers/getOffers';
 import OffersView from '../TBFSpecialOffers/offersView';
 import expandSpecialOfferDescription from '../TBFSpecialOffers/offerEvents';
-import { GET_PARENT_OFFER } from '../constants';
+import { GET_PARENT_OFFER, DEV_STYLE_URL } from '../constants';
 
 jest.mock('../TBFSpecialOffers/request');
 jest.mock('../index.css');
@@ -38,6 +38,21 @@ function getOptions(key) {
     case 'not function':
       options = {
         renderTemplate: 'not function',
+      };
+      break;
+    case 'missing-image':
+      options = {
+        missingImageUrl: '../../test-missing-image.png',
+      };
+      break;
+    case 'without-styles':
+      options = {
+        defaultCSS: false,
+      };
+      break;
+    case 'without-events':
+      options = {
+        defaultEvents: false,
       };
       break;
     default:
@@ -80,6 +95,44 @@ describe('Testing class methods', () => {
         const containsClass = offersView.rootElement.classList.contains('tbf-so-special-offers');
         return expect(containsClass).toBeTruthy();
       });
+  });
+});
+
+describe('Testing options', () => {
+  it('Test using custom missing image url', () => {
+    expect.assertions(1);
+    return setupTest('.special-offers', 'missing-image')
+      .then((offersView) => {
+        expect(offersView.getImageLink('/images/public/missing.png'))
+          .toBe(offersView.options.missingImageUrl);
+      });
+  });
+
+  it('Test using develop styles', () => {
+    OffersView.getLocationHostname = jest.fn();
+    OffersView.getLocationHostname.mockReturnValue('localhost');
+    expect.assertions(1);
+    return setupTest('.special-offers', 'missing-image')
+      .then(() => {
+        expect(document.querySelector(`link[href="${DEV_STYLE_URL}"]`))
+          .not.toBeNull();
+      });
+  });
+
+  it('Do not use default styles', () => {
+    console.warn = jest.fn();
+    expect.assertions(1);
+    return setupTest('.special-offers', 'without-styles')
+      .then(() =>
+        expect(console.warn.mock.calls).toHaveLength(1));
+  });
+
+  it('Do not use default events', () => {
+    console.warn = jest.fn();
+    expect.assertions(1);
+    return setupTest('.special-offers', 'without-events')
+      .then(() =>
+        expect(console.warn.mock.calls).toHaveLength(1));
   });
 });
 

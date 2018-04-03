@@ -82,14 +82,20 @@ class OffersView {
     return (imageLink === '/images/public/missing.png') ? missingImageUrl : imageLink;
   }
 
+  static getLocationHostname() {
+    return window.location.hostname;
+  }
+
   assignCSS() {
     if (this.options.defaultCSS !== false) {
       this.rootElement.classList.add('tbf-so-special-offers');
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = (window.location.hostname === 'localhost') ? DEV_STYLE_URL : PROD_STYLE_URL;
+      link.href = (OffersView.getLocationHostname() === 'localhost') ? DEV_STYLE_URL : PROD_STYLE_URL;
       document.head.appendChild(link);
+    } else {
+      console.warn('Do not use default styles');
     }
   }
 
@@ -99,6 +105,8 @@ class OffersView {
       offerElements.forEach((offerElement) => {
         offerElement.addEventListener('click', expandSpecialOfferDescription);
       });
+    } else {
+      console.warn('Do not use default events');
     }
   }
 }
