@@ -1,4 +1,4 @@
-/* global jest, test, expect */
+/* global jest, test, it, expect */
 
 import request, { getResponse } from '../TBFSpecialOffers/request';
 
