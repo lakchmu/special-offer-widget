@@ -15,47 +15,41 @@ function setup() {
   return getOffers(data.token);
 }
 
+function getNormalRenderFunction() {
+  return (offerModel) => {
+    const { title } = offerModel;
+    const template = `<div class="tbf-so-offer">\n<div class="tbf-so-offer__title">${title}</div>\n</div>`;
+    return template;
+  };
+}
+
+function getErrorRenderFunction() {
+  return () => '<div class="tbf-special-offers"><button class="tbf-so-offer__more-link"></button></div>';
+}
+
 function getOptions(key) {
   let options;
   switch (key) {
-    case 'empty':
-      options = {};
-      break;
     case 'normal-render-function':
-      options = {
-        renderTemplate: (offerModel) => {
-          const { title } = offerModel;
-          const template = `<div class="tbf-so-offer">\n<div class="tbf-so-offer__title">${title}</div>\n</div>`;
-          return template;
-        },
-      };
+      options = { renderTemplate: getNormalRenderFunction() };
       break;
     case 'error-template':
-      options = {
-        renderTemplate: () => '<div class="tbf-special-offers"><button class="tbf-so-offer__more-link"></button></div>',
-      };
+      options = { renderTemplate: getErrorRenderFunction() };
       break;
     case 'not function':
-      options = {
-        renderTemplate: 'not function',
-      };
+      options = { renderTemplate: 'not function' };
       break;
     case 'missing-image':
-      options = {
-        missingImageUrl: '../../test-missing-image.png',
-      };
+      options = { missingImageUrl: '../../test-missing-image.png' };
       break;
     case 'without-styles':
-      options = {
-        defaultCSS: false,
-      };
+      options = { defaultCSS: false };
       break;
     case 'without-events':
-      options = {
-        defaultEvents: false,
-      };
+      options = { defaultEvents: false };
       break;
     default:
+      options = {};
       break;
   }
   return options;
