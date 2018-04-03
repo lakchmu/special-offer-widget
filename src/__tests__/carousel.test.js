@@ -43,6 +43,31 @@ describe('Testing Carousel class', () => {
       });
   });
 
+  it('Test getting next indicator', () => {
+    expect.assertions(3);
+    return setupTest('.special-offers')
+      .then((offersView) => {
+        console.warn = jest.fn();
+        const { carousel } = offersView;
+        const leftArrow = document.querySelector('.tbf-so-arrow[data-direction="to-left"]');
+        const rightArrow = document.querySelector('.tbf-so-arrow[data-direction="to-right"]');
+        const numberLastIndicator = carousel.offersCount - 1;
+
+        let nextIndicator = carousel.getNextIndicator(leftArrow);
+        expect(nextIndicator.dataset.numberOffer)
+          .toBe(JSON.stringify(numberLastIndicator));
+
+        carousel.changeActiveIndicator(nextIndicator);
+
+        nextIndicator = carousel.getNextIndicator(rightArrow);
+        expect(nextIndicator.dataset.numberOffer).toBe('0');
+
+        rightArrow.setAttribute('data-direction', 'to-error');
+        nextIndicator = carousel.getNextIndicator(rightArrow);
+        expect(console.warn.mock.calls).toHaveLength(1);
+      });
+  });
+
   it('Testing indicator event listener', () => {
     expect.assertions(4);
     return setupTest('.special-offers')

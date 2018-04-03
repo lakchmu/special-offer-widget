@@ -74,6 +74,7 @@ class Carousel {
         }
         break;
       default:
+        console.warn('The direction of the arrow is set incorrectly');
         break;
     }
     return this.offerView.rootElement.querySelector(`[data-number-offer='${numberOfferNextIndicator}']`);
