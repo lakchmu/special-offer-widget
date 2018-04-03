@@ -6,7 +6,7 @@ function request(url, method, tokenValue) {
   return new Promise((resolve, reject) => {
     process.nextTick(() => {
       if (url === API_END_POINT + API_METHOD_SPECIAL_OFFERS &&
-        method === 'get' && typeof tokenValue === 'string') {
+        method === 'get' && typeof tokenValue === 'string' && tokenValue !== '') {
         resolve(result);
       } else {
         reject(new Error('Error data'));
